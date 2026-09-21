@@ -1,66 +1,35 @@
 # CLAUDE.md
 
-This repository contains two unrelated things. Know which one you are touching.
+**This repository is the FY3 Beats legal / verification site. Nothing else belongs here.**
 
-## 1. FY3 Beats legal site (repository root) — HANDLE WITH CARE
+## What this is — HANDLE WITH CARE
 
-`index.html`, `privacy.html`, `tos.html`, and `tiktok*.txt` are served by GitHub Pages and are
-**referenced by TikTok and Instagram API reviews**. Do not move, rename, or delete them. A broken
-URL here means a failed platform review, not a broken link.
+`index.html`, `privacy.html`, `tos.html`, and the two `tiktok*.txt` files are served by GitHub
+Pages and are **referenced by TikTok and Instagram API reviews**. Do not move, rename, or delete
+them. A broken URL here means a failed platform review, not a broken link.
 
-`.nojekyll` keeps Pages serving these files verbatim instead of running the repository's Markdown
-through Jekyll. Leave it in place.
+`.nojekyll` keeps Pages serving these files verbatim rather than running anything through Jekyll.
+Leave it in place.
 
-## 2. FY3 Media Engine (`engine/`) — the build
+## Where the FY3 Media Engine went
 
-Research-driven YouTube content operating system. **Architecture only; no code exists yet.**
+The research-driven YouTube content operating system previously drafted here under `engine/` now
+lives in its own repository:
 
----
+**https://github.com/leekthatsfye-beep/fy3-media-engine**
 
-## Operating rule for every session
+It was separated on 2026-09-21 with `git subtree split -P engine`, so its commit history and
+authorship are preserved there. What was `engine/docs/` is now `docs/` in that repository, and its
+`CLAUDE.md` carries the project's operating rule.
 
-Follow this order. It is the project's standing instruction, not a suggestion.
+**Do not add engine code, architecture documents, or project state to this repository.** All of
+that work happens in `fy3-media-engine`. Equally, do not copy the legal-site files into that
+repository — these pages must keep resolving at their current URLs here.
 
-1. **Inspect the current repository state** — do not assume it matches these docs.
-2. **Read `engine/docs/PROJECT_STATE.md`** — the authoritative record of what exists.
-3. **Read the current phase plan** (`PHASE_0_PLAN.md`, then later phases).
-4. **Read the existing implementation before changing it.**
-5. **Identify the smallest coherent next task.**
-6. Implement it.
-7. Test it.
-8. Verify it — actually run the tests; do not infer that they pass.
-9. Update `engine/docs/PROJECT_STATE.md` and any affected architecture document.
-10. Continue.
+## Working on this repository
 
-## Standing prohibitions
+It is static HTML with no build step, no dependencies, and no tests. Changes are edits to the HTML
+files themselves.
 
-- **Never claim something works without running it.**
-- **Never rewrite a working component** because another implementation looks cleaner.
-- **Never create a parallel duplicate system** alongside an existing one.
-- **Never fabricate** analytics, research, citations, or API responses. If an API cannot do
-  something, say so and redesign around reality.
-- **Never use mock or placeholder data in a production path.** Synthetic data belongs in `tests/`
-  and nowhere else.
-- **Never silently swallow an error.** Re-raise, or record a classified failure reason.
-- **Never bypass the three human approval gates** (`APPROVED_IDEA`, `SCRIPT_APPROVED`,
-  `SCHEDULED`). No configuration flag may enable this.
-- **Never hardcode a value that belongs in configuration** — quota costs and provider pricing in
-  particular, since several are still unverified.
-- If something is unfinished, **mark it unfinished** in `PROJECT_STATE.md`.
-
-## Before calling any module complete
-
-The 15-point checklist in `engine/docs/TESTING_STRATEGY.md` §7. All fifteen, every time.
-
-## Phase discipline
-
-Do not build ahead of the current phase. Phases 0–4 build the intelligence loop only, ending at a
-human-approved ranked opportunity. Rendering, voice, and publishing come later by design — if the
-intelligence loop does not surface opportunities worth making videos about, production automation
-is worthless.
-
-## Open blocking questions
-
-Three external facts are unconfirmed and each blocks a phase — see the table in
-`engine/docs/PROJECT_STATE.md`. Confirm against live documentation at the start of the relevant
-phase. **Do not implement against assumed API values.**
+Before changing any of the four served pages, consider whether a platform review currently depends
+on its URL or its content. When in doubt, ask rather than edit.
